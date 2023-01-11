@@ -1,14 +1,12 @@
-import { Box, Button, Card, CardActions, CardContent } from "@mui/material";
-import BasicCard from "../UI/BasicCard";
+import { Button, Card, CardActions, CardContent } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import { useDispatch } from "react-redux";
-import { toggleFav } from "../../src/store/actions/products";
+import { useCustomStore } from "../../src/hooks-store/store";
 
 export default function ProductItem(props) {
-  const dispatch = useDispatch();
+  const dispatch = useCustomStore()[1];
 
   const toggleFavHandler = () => {
-    dispatch(toggleFav(props.id));
+    dispatch("TOGGLE_FAV", props.id);
   };
 
   return (
@@ -34,7 +32,7 @@ export default function ProductItem(props) {
       </CardContent>
       <CardActions sx={{ minWidth: 100, minHeight: 100 }}>
         <Button onClick={toggleFavHandler}>
-          {props.isFav ? "Un-Favorite" : "Favorite"}
+          {props.isFav ? "Not Favorite" : "Favorite"}
         </Button>
       </CardActions>
     </Card>

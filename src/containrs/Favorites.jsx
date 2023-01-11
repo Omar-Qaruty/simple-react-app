@@ -1,12 +1,11 @@
 import { Typography } from "@mui/material";
-import { useSelector } from "react-redux";
 import FavoriteItem from "../../components/Favorites/FavoriteItem";
 import BasicCard from "../../components/UI/BasicCard";
+import { useCustomStore } from "../hooks-store/store";
 
 const Favorites = (props) => {
-  const favoriteProducts = useSelector((state) =>
-    state.shop.products.filter((p) => p.isFavorite)
-  );
+  const state = useCustomStore()[0];
+  const favoriteProducts = state.products.filter((p) => p.isFavorite);
 
   let content = (
     <Typography

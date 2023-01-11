@@ -1,11 +1,14 @@
-import { useSelector } from "react-redux";
 import ProductItem from "../../components/Products/ProductItem";
 import BasicCard from "../../components/UI/BasicCard";
+import { useCustomStore } from "../hooks-store/store";
+
 const Products = (props) => {
-  const productList = useSelector((state) => state.shop.products);
+  const state = useCustomStore()[0];
+
   return (
     <BasicCard>
-      {productList.map((prod) => (
+      {console.log(state)}
+      {state.products.map((prod) => (
         <ProductItem
           key={prod.id}
           id={prod.id}
